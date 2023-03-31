@@ -25,6 +25,6 @@ public class Timer : MonoBehaviour
 
     void RefreshTimerText()
     {
-        timerText.text = $"{gameTime:f2}√ ";
+        timerText.text = $"{gameTime:f2} sec";
     }
 }

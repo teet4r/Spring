@@ -19,6 +19,6 @@ public class FlowerNumText : MonoBehaviour
 
     void RefreshFlowerNumText()
     {
-        flowerNumText.text = $"x {FlowerManager.instance.FlowerNum}";
+        flowerNumText.text = $"X {FlowerManager.instance.FlowerNum}";
     }
 }
