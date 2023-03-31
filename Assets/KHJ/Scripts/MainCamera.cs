@@ -32,11 +32,8 @@ public class MainCamera : MonoBehaviour
         _halfWidth = _halfHeight * _camera.aspect;
     }
 
-    public Vector2 ModifyPositionWithinCamera(float worldPositionX, float worldPositionY, Sprite sprite, Vector3 scale)
+    public Vector2 ModifyPositionWithinCamera(float worldPositionX, float worldPositionY, float spriteHalfHeight, float spriteHalfWidth)
     {
-        var spriteHalfHeight = sprite.bounds.size.y / 2 * scale.y;
-        var spriteHalfWidth = sprite.bounds.size.x / 2 * scale.x;
-
         var x = Mathf.Clamp(
             worldPositionX,
             -HalfWidth + spriteHalfWidth,
@@ -52,8 +49,13 @@ public class MainCamera : MonoBehaviour
         return new Vector2(x, y);
     }
 
-    public Vector2 ModifyPositionWithinCamera(Vector2 worldPosition, Sprite sprite, Vector3 scale)
+    public Vector2 ModifyPositionWithinCamera(Vector2 worldPosition, float spriteHalfHeight, float spriteHalfWidth)
     {
-        return ModifyPositionWithinCamera(worldPosition.x, worldPosition.y, sprite, scale);
+        return ModifyPositionWithinCamera(worldPosition.x, worldPosition.y, spriteHalfHeight, spriteHalfWidth);
+    }
+
+    public bool IsOutOfCamera()
+    {
+        return true;
     }
 }

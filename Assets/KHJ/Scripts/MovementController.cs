@@ -4,6 +4,8 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class MovementController : MonoBehaviour
 {
+    [SerializeField] Camera _mainCamera = null;
+
     [SerializeField] Transform _tranform = default;
 
     [SerializeField] Rigidbody2D _rigidbody = default;
@@ -17,6 +19,14 @@ public class MovementController : MonoBehaviour
     float _horizontal = default;
 
 
+    /*
+    void Awake()
+    {
+        _mainCamera.orthographicSize = Screen.height >> 1;
+
+        _halfHeight = _mainCamera.orthographicSize;
+        _halfWidth = _halfHeight * _mainCamera.aspect;
+    }
 
     void Update()
     {
@@ -24,6 +34,7 @@ public class MovementController : MonoBehaviour
         _horizontal = Input.GetAxisRaw("Horizontal");
 
         _Move();
+        _FlipSpriteByMoveDirection();
     }
 
     void _Move()
@@ -39,4 +50,30 @@ public class MovementController : MonoBehaviour
 
         _rigidbody.MovePosition(modifiedNextPosition);
     }
+
+    Vector2 _LimitMoveWithinCamera(float worldPositionX, float worldPositionY, float spriteHalfHeight, float spriteHalfWidth)
+    {
+        var x = Mathf.Clamp(
+            worldPositionX,
+            -HalfWidth + spriteHalfWidth,
+            HalfWidth - spriteHalfWidth
+        );
+
+        var y = Mathf.Clamp(
+            worldPositionY,
+            -HalfHeight + spriteHalfHeight,
+            HalfHeight - spriteHalfHeight
+        );
+
+        return new Vector2(x, y);
+    }
+
+    void _FlipSpriteByMoveDirection()
+    {
+        if (_horizontal < 0)
+            _spriteRenderer.flipX = false;
+        else if (_horizontal > 0)
+            _spriteRenderer.flipX = true;
+    }*/
 }
+    
