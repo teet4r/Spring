@@ -19,6 +19,7 @@ public class Timer : MonoBehaviour
     private void Update()
     {
         gameTime += Time.deltaTime;
+        ScoreManager.instance.SetTimeScore(gameTime);
         RefreshTimerText();
     }
 
