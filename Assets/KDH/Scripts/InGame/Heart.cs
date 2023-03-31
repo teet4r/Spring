@@ -23,4 +23,10 @@ public class Heart : MonoBehaviour
         isFilled = false;
         image.sprite = emptyHeart;
     }
+
+    public void FillHeart()
+    {
+        isFilled = true;
+        image.sprite = filledHeart;
+    }
 }

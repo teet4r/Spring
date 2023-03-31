@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class ItemSlot : MonoBehaviour
 {
-    Image image;
+    [SerializeField] Image image;
     int itemType = -1;
 
     public int ItemType { get { return itemType; } }
@@ -13,8 +13,7 @@ public class ItemSlot : MonoBehaviour
 
     private void Awake()
     {
-        image = GetComponent<Image>();
-        InitSlot();
+        SetImageInvisible();
     }
 
     void SetImageInvisible()
@@ -47,11 +46,6 @@ public class ItemSlot : MonoBehaviour
     {
         itemType = -1;
         image.sprite = null;
-        SetImageInvisible();
-    }
-
-    void InitSlot()
-    {
         SetImageInvisible();
     }
 }

@@ -6,15 +6,16 @@ public class HeartManager : MonoBehaviour
 {
     public static HeartManager instance;
 
-    [SerializeField] GameObject heartImage;
+    [SerializeField] GameObject heart;
     Transform tr;
     int stage;
-    int heart;
+    int heartNum;
 
     private void Awake()
     {
         instance = this;
         tr = transform;
+        InitHeart(1);
     }
 
     // InitHeart(int) - 스테이지 시작할 때 호출
@@ -23,25 +24,39 @@ public class HeartManager : MonoBehaviour
     {
         stage = _stage;
         SetHeartNum();
-        for (int i = 0; i < heart; i++)
+        for (int i = 0; i < heartNum; i++)
         {
-            Instantiate(heartImage, tr);
+            Instantiate(heart, tr);
         }
     }
 
     void SetHeartNum()
     {
-        heart = 4 - stage;
+        heartNum = 4 - stage;
     }
 
     public void GetDamaged()
     {
-        for (int i = heart - 1; i >= 0; i++)
+        for (int i = heartNum - 1; i >= 0; i--)
         {
             Heart _heart = tr.GetChild(i).GetComponent<Heart>();
             if (_heart.IsFilled)
             {
                 _heart.BreakHeart();
+                break;
+            }
+        }
+    }
+
+    public void RestoreHeart()
+    {
+        for (int i = 0; i < heartNum; i++)
+        {
+            Heart _heart = tr.GetChild(i).GetComponent<Heart>();
+            if (!_heart.IsFilled)
+            {
+                _heart.FillHeart();
+                break;
             }
         }
     }
