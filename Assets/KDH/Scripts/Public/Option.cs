@@ -9,6 +9,7 @@ public class Option : MonoBehaviour
 
     [SerializeField] Slider bgmSlider;
     [SerializeField] Slider sfxSlider;
+    [SerializeField] GameObject optionWindow;
 
     private void Awake()
     {
@@ -31,9 +32,21 @@ public class Option : MonoBehaviour
 
     void RefreshBgmVolume()
     {
+        SoundManager.Instance.BgmAudio.volume = bgmSlider.value;
     }
 
     void RefreshSfxVolume()
     {
+        SoundManager.Instance.SfxAudio.volume = sfxSlider.value;
+    }
+
+    public void OpenOptionWindow()
+    {
+        optionWindow.SetActive(true);
+    }
+
+    public void CloseOptionWindow()
+    {
+        optionWindow.SetActive(false);
     }
 }
