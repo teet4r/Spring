@@ -6,7 +6,9 @@ using UnityEngine.UI;
 public class Timer : MonoBehaviour
 {
     Text timerText;
-    float time = 0f;
+    float gameTime = 0f;
+
+    public float GameTime { get { return gameTime; } }
 
     private void Awake()
     {
@@ -16,12 +18,12 @@ public class Timer : MonoBehaviour
 
     private void Update()
     {
-        time += Time.deltaTime;
+        gameTime += Time.deltaTime;
         RefreshTimerText();
     }
 
     void RefreshTimerText()
     {
-        timerText.text = $"{time:f2}√ ";
+        timerText.text = $"{gameTime:f2}√ ";
     }
 }
