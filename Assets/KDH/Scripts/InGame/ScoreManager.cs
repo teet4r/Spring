@@ -33,6 +33,6 @@ public class ScoreManager : MonoBehaviour
 
     public void SetTimeScore(float _time)
     {
-        timeScore = ((int)_time / 10) * 50;
+        timeScore = ((int)_time / 10) * 500 + ((int)_time) * 10;
     }
 }

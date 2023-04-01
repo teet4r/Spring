@@ -5,9 +5,6 @@ using UnityEngine.UI;
 
 public class Heart : MonoBehaviour
 {
-    [SerializeField] Sprite filledHeart;
-    [SerializeField] Sprite emptyHeart;
-
     Image image;
     bool isFilled = true;
 
@@ -21,12 +18,12 @@ public class Heart : MonoBehaviour
     public void BreakHeart()
     {
         isFilled = false;
-        image.sprite = emptyHeart;
+        image.color = Color.black;
     }
 
     public void FillHeart()
     {
         isFilled = true;
-        image.sprite = filledHeart;
+        image.color = Color.white;
     }
 }
