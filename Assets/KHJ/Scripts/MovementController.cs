@@ -5,11 +5,6 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class MovementController : MonoBehaviour
 {
-    public float Speed
-    {
-        get => _speed;
-    }
-
     [SerializeField] Transform _transform;
 
     [SerializeField] Rigidbody2D _rigidbody;
@@ -36,6 +31,8 @@ public class MovementController : MonoBehaviour
 
     bool _originFlipY;
 
+    float _speedMultiplier = 1f;
+
     Coroutine _changeSpeedCoroutine;
 
 
@@ -60,21 +57,22 @@ public class MovementController : MonoBehaviour
         _FlipY();
     }
 
-    public void ChangeSpeed(float newSpeed, float time)
+    void OnDisable()
     {
-        if (_changeSpeedCoroutine != null)
-        {
-            StopCoroutine(_changeSpeedCoroutine);
-            _changeSpeedCoroutine = null;
-        }
+        _StopChangeSpeed();
+    }
 
-        _changeSpeedCoroutine = StartCoroutine(_ChangeSpeed(newSpeed, time));
+    public void StartChangeSpeed(float speedMultiplier, float time)
+    {
+        _StopChangeSpeed();
+
+        _changeSpeedCoroutine = StartCoroutine(_ChangeSpeed(speedMultiplier, time));
     }
 
     void _Move()
     {
         var dir = (Vector2.up * _vertical + Vector2.right * _horizontal).normalized;
-        var nextPosition = _rigidbody.position + dir * _speed * Time.deltaTime;
+        var nextPosition = _rigidbody.position + dir * _speed * _speedMultiplier * Time.deltaTime;
 
         if (_limitMoveWithinMainCamera)
             nextPosition = _LimitMoveWithinCamera(nextPosition);
@@ -119,15 +117,23 @@ public class MovementController : MonoBehaviour
             _spriteRenderer.flipY = !_originFlipY;
     }
 
-    IEnumerator _ChangeSpeed(float newSpeed, float time)
+    IEnumerator _ChangeSpeed(float speedMultiplier, float time)
     {
-        var originSpeed = _speed;
-
-        _speed = newSpeed;
+        _speedMultiplier = speedMultiplier;
 
         yield return new WaitForSeconds(time);
 
-        _speed = originSpeed;
+        _speedMultiplier = 1f;
+    }
+
+    void _StopChangeSpeed()
+    {
+        _speedMultiplier = 1f;
+
+        if (_changeSpeedCoroutine != null)
+            StopCoroutine(_changeSpeedCoroutine);
+
+        _changeSpeedCoroutine = null;
     }
 }
     

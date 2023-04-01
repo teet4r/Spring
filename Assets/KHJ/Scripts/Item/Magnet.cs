@@ -12,5 +12,7 @@ public class Magnet : Item, IUsable
     public void Use(Bee player)
     {
 
+
+        Destroy(gameObject);
     }
 }
