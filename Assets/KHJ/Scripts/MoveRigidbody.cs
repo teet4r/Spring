@@ -5,15 +5,7 @@ using UnityEngine;
 [RequireComponent(typeof(Rigidbody2D))]
 public class MoveRigidbody : MonoBehaviour
 {
-    public float Speed
-    {
-        get => _speed;
-        set => _speed = value;
-    }
-
     [SerializeField] Rigidbody2D _rigidbody;
-
-    [SerializeField] float _speed;
 
     Coroutine _moveCoroutine;
 
@@ -29,12 +21,12 @@ public class MoveRigidbody : MonoBehaviour
         StopMove();
     }
 
-    public void StartMove(Vector2 start, Vector2 end)
+    public void StartMove(Vector2 start, Vector2 end, float speed)
     {
         if (_moveCoroutine != null)
             return;
 
-        _moveCoroutine = StartCoroutine(_MoveAToB(start, end));
+        _moveCoroutine = StartCoroutine(_MoveAToB(start, end, speed));
     }
 
     public void StopMove()
@@ -47,13 +39,13 @@ public class MoveRigidbody : MonoBehaviour
         _moveCoroutine = null;
     }
 
-    IEnumerator _MoveAToB(Vector2 start, Vector2 end)
+    IEnumerator _MoveAToB(Vector2 start, Vector2 end, float speed)
     {
         _rigidbody.position = start;
 
         while (_rigidbody.position != end)
         {
-            _rigidbody.position = Vector3.MoveTowards(_rigidbody.position, end, _speed * Time.deltaTime);
+            _rigidbody.position = Vector3.MoveTowards(_rigidbody.position, end, speed * Time.deltaTime);
 
             yield return null;
         }

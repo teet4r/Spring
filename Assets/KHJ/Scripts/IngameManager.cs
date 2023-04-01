@@ -8,8 +8,6 @@ public class IngameManager : MonoBehaviour
 
     [SerializeField] Bee _beePrefab;
 
-    [SerializeField] Hornet _enemyPrefab;
-
     [SerializeField] Flower _flowerPrefab;
 
     [SerializeField] Boom _boomPrefab;
@@ -19,6 +17,8 @@ public class IngameManager : MonoBehaviour
     [SerializeField] Potion _potionPrefab;
 
     [SerializeField] Magnet _magnetPrefab;
+
+    [SerializeField] HornetSpawner _hornetSpawner;
 
 
 
@@ -33,7 +33,7 @@ public class IngameManager : MonoBehaviour
         Instantiate(_beePrefab);
 
         // 富国 积己
-        StartCoroutine(_MakeHornet());
+        _hornetSpawner.StartSpawningHornet();
 
         // 采 积己
         //StartCoroutine(_MakeFlower());
@@ -48,28 +48,7 @@ public class IngameManager : MonoBehaviour
         //StartCoroutine(_MakePotion());
 
         // 磊籍 积己
-        StartCoroutine(_MakeMagnet());
-    }
-
-    IEnumerator _MakeHornet()
-    {
-        var wfs = new WaitForSeconds(0.25f);
-
-        var spawnPosition = new Vector2(2000f, 2000f);
-
-        while (true)
-        {
-            var clone = Instantiate(_enemyPrefab, spawnPosition, Quaternion.identity);
-
-            var start = Circle.GetOnUnitCirclePoint(Vector2.zero, Random.Range(0f, 360f)) * 1200f;
-            var end = -start;
-
-            clone.MoveRigidbody.StartMove(start, end);
-            clone.RotateRigidbody.StartLookAt(end);
-            clone.DestroyTimer.StartTimer();
-
-            yield return wfs;
-        }
+        //StartCoroutine(_MakeMagnet());
     }
 
     IEnumerator _MakeFlower()
@@ -78,7 +57,7 @@ public class IngameManager : MonoBehaviour
 
         while (true)
         {
-            Instantiate(_flowerPrefab);
+            Instantiate(_flowerPrefab, new Vector2(3000f, 3000f), Quaternion.identity);
 
             yield return wfs;
         }

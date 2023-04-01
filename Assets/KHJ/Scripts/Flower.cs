@@ -19,9 +19,9 @@ public class Flower : MonoBehaviour
     {
         if (collision.TryGetComponent(out Bee bee))
         {
-            Debug.Log("µµ·Î·Õ Á¡¼ö È¹µæ!!");
             //ScoreManager.instance.AddScore(_score);
 
+            Debug.Log("µµ·Î·Õ Á¡¼ö È¹µæ!!");
             Destroy(gameObject);
         }
     }

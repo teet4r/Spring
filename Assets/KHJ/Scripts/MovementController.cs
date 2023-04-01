@@ -5,6 +5,11 @@ using UnityEngine;
 [RequireComponent(typeof(SpriteRenderer))]
 public class MovementController : MonoBehaviour
 {
+    public Vector2 Position
+    {
+        get => _rigidbody.position;
+    }
+
     [SerializeField] Transform _transform;
 
     [SerializeField] Rigidbody2D _rigidbody;
