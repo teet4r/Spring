@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Hornet : MonoBehaviour
+public class Hornet : Enemy
 {
     public MoveRigidbody MoveRigidbody
     {

@@ -18,15 +18,9 @@ public class MovementController : MonoBehaviour
 
     [SerializeField] bool _activateFlipY;
 
-    Camera _camera;
-
     float _vertical;
 
     float _horizontal;
-
-    float _cameraHalfHeight;
-
-    float _cameraHalfWidth;
 
     float _spriteHalfHeight;
 
@@ -40,12 +34,6 @@ public class MovementController : MonoBehaviour
     
     void Awake()
     {
-        _camera = Camera.main;
-        _camera.orthographicSize = Screen.height >> 1;
-
-        _cameraHalfHeight = _camera.orthographicSize;
-        _cameraHalfWidth = _cameraHalfHeight * _camera.aspect;
-
         _spriteHalfHeight = _spriteRenderer.sprite.bounds.size.y / 2 * _transform.localScale.y;
         _spriteHalfWidth = _spriteRenderer.sprite.bounds.size.x / 2 * _transform.localScale.x;
 
@@ -79,14 +67,14 @@ public class MovementController : MonoBehaviour
     {
         var x = Mathf.Clamp(
             curWorldPosition.x,
-            -_cameraHalfWidth + _spriteHalfWidth,
-            _cameraHalfWidth - _spriteHalfWidth
+            -MainCamera.Instance.CameraHalfWidth + _spriteHalfWidth,
+            MainCamera.Instance.CameraHalfWidth - _spriteHalfWidth
         );
 
         var y = Mathf.Clamp(
             curWorldPosition.y,
-            -_cameraHalfHeight + _spriteHalfHeight,
-            _cameraHalfHeight - _spriteHalfHeight
+            -MainCamera.Instance.CameraHalfHeight + _spriteHalfHeight,
+            MainCamera.Instance.CameraHalfHeight - _spriteHalfHeight
         );
 
         return new Vector2(x, y);
