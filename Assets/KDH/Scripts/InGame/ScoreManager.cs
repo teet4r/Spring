@@ -11,6 +11,8 @@ public class ScoreManager : MonoBehaviour
     [SerializeField] int score = 0;
     int timeScore = 0;
 
+    public int Score { get { return score; } }
+
     private void Awake()
     {
         instance = this;

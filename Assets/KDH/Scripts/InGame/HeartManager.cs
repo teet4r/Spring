@@ -10,6 +10,8 @@ public class HeartManager : MonoBehaviour
     [SerializeField] int heartNum;
     Transform tr;
 
+    public int CurrentHeart { get { return heartNum; } }
+
     private void Awake()
     {
         instance = this;
@@ -25,15 +27,18 @@ public class HeartManager : MonoBehaviour
         }
     }
 
-    public void GetDamaged()
+    public void GetDamaged(int _damage)
     {
-        for (int i = heartNum - 1; i >= 0; i--)
+        for (int i = 0; i < _damage; i++)
         {
-            Heart _heart = tr.GetChild(i).GetComponent<Heart>();
-            if (_heart.IsFilled)
+            for (int j = heartNum - 1; j >= 0; j--)
             {
-                _heart.BreakHeart();
-                break;
+                Heart _heart = tr.GetChild(j).GetComponent<Heart>();
+                if (_heart.IsFilled)
+                {
+                    _heart.BreakHeart();
+                    break;
+                }
             }
         }
     }
