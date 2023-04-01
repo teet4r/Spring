@@ -23,19 +23,22 @@ public class StartTimer : MonoBehaviour
     IEnumerator PlayTimerText()
     {
         GameObject tmpObject;
-        SoundManager.Instance.PlaySfx(Sfx.COUNTDOWN);
-        yield return new WaitForSecondsRealtime(0.4f);
+        yield return new WaitForSeconds(1f);
         tmpObject = Instantiate(countDownText, tr);
         tmpObject.GetComponent<CountDownText>().SetText("3");
-        yield return new WaitForSecondsRealtime(0.95f);
+        SoundManager.Instance.PlaySfx(Sfx.COUNTDOWN_BEEP);
+        yield return new WaitForSeconds(1f);
         tmpObject = Instantiate(countDownText, tr);
         tmpObject.GetComponent<CountDownText>().SetText("2");
-        yield return new WaitForSecondsRealtime(0.95f);
+        SoundManager.Instance.PlaySfx(Sfx.COUNTDOWN_BEEP);
+        yield return new WaitForSeconds(1f);
         tmpObject = Instantiate(countDownText, tr);
         tmpObject.GetComponent<CountDownText>().SetText("1");
-        yield return new WaitForSecondsRealtime(0.95f);
+        SoundManager.Instance.PlaySfx(Sfx.COUNTDOWN_BEEP);
+        yield return new WaitForSeconds(1f);
         Instantiate(startText, tr);
-        yield return new WaitForSecondsRealtime(1f);
+        SoundManager.Instance.PlaySfx(Sfx.COUNTDOWN);
+        yield return new WaitForSeconds(1f);
         timer.StartTimer();
         yield break;
     }

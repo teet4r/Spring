@@ -30,7 +30,7 @@ public class Option : MonoBehaviour
 
     public void RefreshOption()
     {
-        if (SceneManager.GetActiveScene().name == "InGame")
+        if (SceneManager.GetActiveScene().name == "Ingame")
         {
             optionButton.SetActive(false);
             mainMenuButtonGroup.SetActive(false);
@@ -52,13 +52,32 @@ public class Option : MonoBehaviour
 
     private void Update()
     {
-        if (SceneManager.GetActiveScene().name == "InGame")
+        if (SceneManager.GetActiveScene().name == "Ingame")
         {
             if (Input.GetKeyDown(KeyCode.Escape))
             {
                 OptionWindowActivate();
+                if (optionWindow.activeSelf)
+                {
+                    Time.timeScale = 0;
+                }
+                else
+                {
+                    Time.timeScale = 1;
+                }
             }
         }
+    }
+
+    public void SelectResumeButton()
+    {
+        OptionWindowActivate();
+        Time.timeScale = 1;
+    }
+
+    public void SelectMainMenuButton()
+    {
+        SceneManager.LoadScene("MainMenu");
     }
 
     void OptionWindowActivate()

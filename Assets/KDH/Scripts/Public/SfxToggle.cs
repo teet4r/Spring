@@ -1,18 +1,32 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class SfxToggle : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] Image image;
+    [SerializeField] Sprite muteSprite;
+    [SerializeField] Sprite nonMuteSprite;
+    Toggle toggle;
+
+    private void Start()
     {
-        
+        toggle = GetComponent<Toggle>();
+        toggle.onValueChanged.AddListener(delegate { ToggleSFX(); });
     }
 
-    // Update is called once per frame
-    void Update()
+    void ToggleSFX()
     {
-        
+        SoundManager.Instance.PlaySfx(Sfx.BUTTON);
+        SoundManager.Instance.MuteSfx(toggle.isOn);
+        if (toggle.isOn)
+        {
+            image.sprite = muteSprite;
+        }
+        else
+        {
+            image.sprite = nonMuteSprite;
+        }
     }
 }

@@ -37,6 +37,16 @@ public class SoundManager : Singleton<SoundManager>
         _bgmAudio.Play();
     }
 
+    public void MuteBgm(bool _tf)
+    {
+        _bgmAudio.mute = _tf;
+    }
+
+    public void MuteSfx(bool _tf)
+    {
+        _sfxAudio.mute = _tf;
+    }
+
     public void PlaySfx(Sfx sfx)
     {
         _sfxAudio.PlayOneShot(_sfxClips[(int)sfx]);
@@ -55,5 +65,5 @@ public enum Bgm
 
 public enum Sfx
 {
-    GAMEOVER, COUNTDOWN, BUTTON, DAMAGED, FLOWER_GET, USE_POWER, USE_BOMB, USE_MAGNET, USE_POTION, HORNET_RUSH, HORNET_BUZZ
+    GAMEOVER, COUNTDOWN, BUTTON, DAMAGED, FLOWER_GET, USE_POWER, USE_BOMB, USE_MAGNET, USE_POTION, HORNET_RUSH, HORNET_BUZZ, COUNTDOWN_BEEP
 }

@@ -6,14 +6,27 @@ using UnityEngine.UI;
 public class BgmToggle : MonoBehaviour
 {
     [SerializeField] Image image;
+    [SerializeField] Sprite muteSprite;
+    [SerializeField] Sprite nonMuteSprite;
+    Toggle toggle;
 
     private void Start()
     {
-        GetComponent<Toggle>().onValueChanged.AddListener(delegate { ToggleBGM(); });
+        toggle = GetComponent<Toggle>();
+        toggle.onValueChanged.AddListener(delegate { ToggleBGM(); });
     }
 
     void ToggleBGM()
     {
-
+        SoundManager.Instance.PlaySfx(Sfx.BUTTON);
+        SoundManager.Instance.MuteBgm(toggle.isOn);
+        if (toggle.isOn)
+        {
+            image.sprite = muteSprite;
+        }
+        else
+        {
+            image.sprite = nonMuteSprite;
+        }
     }
 }

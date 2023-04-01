@@ -2,10 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class OptionButtonActivator : MonoBehaviour
+public class BgmPlay : MonoBehaviour
 {
+    [SerializeField] Bgm bgm;
+
     private void Start()
     {
-        Option.instance.RefreshOption();
+        SoundManager.Instance.PlayBgm(bgm);
     }
 }
