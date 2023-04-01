@@ -60,6 +60,7 @@ public class HeartManager : MonoBehaviour
             if (!_heart.IsFilled)
             {
                 _heart.FillHeart();
+                currentHeart++;
                 break;
             }
         }
