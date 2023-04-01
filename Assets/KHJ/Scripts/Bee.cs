@@ -17,6 +17,6 @@ public class Bee : MonoBehaviour, IDamageable
 
     public void GetDamage(int damage)
     {
-        HeartManager.instance.GetDamaged();
+        HeartManager.instance.GetDamaged(damage);
     }
 }
