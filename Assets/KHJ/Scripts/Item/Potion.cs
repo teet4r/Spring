@@ -13,6 +13,8 @@ public class Potion : Item, IUsable
     {
         HeartManager.instance.RestoreHeart();
 
+        player.StartChangingColor(Color.green);
+
         Destroy(gameObject);
     }
 }

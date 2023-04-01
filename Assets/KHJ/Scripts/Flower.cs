@@ -17,9 +17,10 @@ public class Flower : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Bee bee))
+        if (collision.TryGetComponent(out Bee player))
         {
             ScoreManager.instance.AddScore(_score);
+            FlowerManager.instance.AcquireFlower();
 
             Destroy(gameObject);
         }

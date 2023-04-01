@@ -27,9 +27,10 @@ public class Hornet : Enemy, IDamageable
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out Bee bee))
+        if (collision.TryGetComponent(out Bee player))
         {
-            bee.GetDamage(1);
+            player.StartChangingColor(Color.red);
+            player.GetDamage(1);
             GetDamage(1000);
         }
     }

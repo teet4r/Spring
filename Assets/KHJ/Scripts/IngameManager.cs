@@ -25,8 +25,10 @@ public class IngameManager : MonoBehaviour
         Instance = this;
     }
 
-    void Start()
+    IEnumerator Start()
     {
+        yield return new WaitForSeconds(3f);
+
         // ²Ü¹ú »ý¼º
         _bee = Instantiate(_beePrefab);
 

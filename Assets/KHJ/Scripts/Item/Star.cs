@@ -11,6 +11,7 @@ public class Star : Item, IUsable
 
     public void Use(Bee player)
     {
+        player.StartChangingColor(Color.yellow);
         player.StartInvincible(2f);
         player.MovementController.StartChangeSpeed(1.5f, 2f);
 
