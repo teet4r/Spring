@@ -48,8 +48,21 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _bgmAudio: {fileID: 3937296556861554364}
   _sfxAudio: {fileID: 3937296556861554367}
-  _bgmClips: []
-  _sfxClips: []
+  _bgmClips:
+  - {fileID: 8300000, guid: d6d2342b990741044906a3192462396d, type: 3}
+  - {fileID: 8300000, guid: 880aa6cb5e5953340b64ddee6284d275, type: 3}
+  _sfxClips:
+  - {fileID: 8300000, guid: 6f83db9c60ed65343bc68f03a358fdf1, type: 3}
+  - {fileID: 8300000, guid: 25392241c1303cf438985a82312e846f, type: 3}
+  - {fileID: 0}
+  - {fileID: 8300000, guid: 6ebe42908a89bb947965ed64e3a1a735, type: 3}
+  - {fileID: 8300000, guid: f31f33c99503d65488ce4e0cd584cb16, type: 3}
+  - {fileID: 8300000, guid: 4627e462d82419d42a061a008df4e186, type: 3}
+  - {fileID: 8300000, guid: e2f21c2306a00c64f9402ee0baad22b7, type: 3}
+  - {fileID: 8300000, guid: 7930b1ebb22b6e54b854cdd1773b0909, type: 3}
+  - {fileID: 8300000, guid: 929b428aad85dea4da7acc031c6910a9, type: 3}
+  - {fileID: 8300000, guid: 6264145095dcbf341a9f7fb8d9bd195d, type: 3}
+  - {fileID: 8300000, guid: 66597bfe10e1bad4b87980b84a634143, type: 3}
 --- !u!82 &3937296556861554364
 AudioSource:
   m_ObjectHideFlags: 0

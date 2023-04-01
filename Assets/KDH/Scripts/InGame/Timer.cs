@@ -16,11 +16,25 @@ public class Timer : MonoBehaviour
         RefreshTimerText();
     }
 
-    private void Update()
+    IEnumerator PlayTimer()
     {
-        gameTime += Time.deltaTime;
-        ScoreManager.instance.SetTimeScore(gameTime);
-        RefreshTimerText();
+        while (true)
+        {
+            gameTime += Time.deltaTime;
+            ScoreManager.instance.SetTimeScore(gameTime);
+            RefreshTimerText();
+            yield return null;
+        }
+    }
+
+    public void StartTimer()
+    {
+        StartCoroutine(PlayTimer());
+    }
+
+    public void StopTimer()
+    {
+        StopCoroutine(PlayTimer());
     }
 
     void RefreshTimerText()

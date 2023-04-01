@@ -8,9 +8,11 @@ public class HeartManager : MonoBehaviour
 
     [SerializeField] GameObject heart;
     [SerializeField] int heartNum;
+    [SerializeField] Timer timer;
     Transform tr;
+    int currentHeart;
 
-    public int CurrentHeart { get { return heartNum; } }
+    public int CurrentHeart { get { return currentHeart; } }
 
     private void Awake()
     {
@@ -25,6 +27,7 @@ public class HeartManager : MonoBehaviour
         {
             Instantiate(heart, tr);
         }
+        currentHeart = heartNum;
     }
 
     public void GetDamaged(int _damage)
@@ -37,6 +40,11 @@ public class HeartManager : MonoBehaviour
                 if (_heart.IsFilled)
                 {
                     _heart.BreakHeart();
+                    currentHeart--;
+                    if (currentHeart <= 0)
+                    {
+                        GameOver();
+                    }
                     break;
                 }
             }
@@ -54,5 +62,16 @@ public class HeartManager : MonoBehaviour
                 break;
             }
         }
+    }
+
+
+    // 게임 오버가 되면 처리해야할 것들
+    // 1. 게임 타이머 멈추기
+    // 2. 적 소환 멈추기 - CurrentHeart 프로퍼티를 가져간 어디선가 관리
+    // 3. 게임 오버 UI 띄우기
+    void GameOver()
+    {
+        timer.StopTimer();
+        GameOverWindow.instance.ActivateWindow();
     }
 }

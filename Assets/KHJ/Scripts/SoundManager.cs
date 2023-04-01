@@ -50,10 +50,10 @@ public class SoundManager : Singleton<SoundManager>
 
 public enum Bgm
 {
-
+    MAIN_MENU,IN_GAME
 }
 
 public enum Sfx
 {
-
+    GAMEOVER, COUNTDOWN, BUTTON, DAMAGED, FLOWER_GET, USE_POWER, USE_BOMB, USE_MAGNET, USE_POTION, HORNET_RUSH, HORNET_BUZZ
 }

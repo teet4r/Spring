@@ -5,12 +5,14 @@ using UnityEngine.UI;
 
 public class StartTimer : MonoBehaviour
 {
-    Text timerText;
-    float timerTime = 0f;
+    Transform tr;
+    [SerializeField] GameObject countDownText;
+    [SerializeField] GameObject startText;
+    [SerializeField] Timer timer;
 
     private void Awake()
     {
-        timerText = GetComponent<Text>();
+        tr = transform;
     }
 
     private void Start()
@@ -20,17 +22,20 @@ public class StartTimer : MonoBehaviour
 
     IEnumerator PlayTimerText()
     {
+        GameObject tmpObject;
         yield return new WaitForSecondsRealtime(0.5f);
-        timerText.text = "3";
-        yield return new WaitForSecondsRealtime(0.5f);
-        timerText.text = "2";
-        yield return new WaitForSecondsRealtime(0.5f);
-        timerText.text = "1";
-        yield return new WaitForSecondsRealtime(0.5f);
-        timerText.text = "Start!";
-        timerText.color = new Color(1f, 0.45f, 0f);
-        yield return new WaitForSecondsRealtime(0.5f);
-        timerText.text = "";
+        tmpObject = Instantiate(countDownText, tr);
+        tmpObject.GetComponent<CountDownText>().SetText("3");
+        yield return new WaitForSecondsRealtime(1f);
+        tmpObject = Instantiate(countDownText, tr);
+        tmpObject.GetComponent<CountDownText>().SetText("2");
+        yield return new WaitForSecondsRealtime(1f);
+        tmpObject = Instantiate(countDownText, tr);
+        tmpObject.GetComponent<CountDownText>().SetText("1");
+        yield return new WaitForSecondsRealtime(1f);
+        Instantiate(startText, tr);
+        yield return new WaitForSecondsRealtime(1f);
+        timer.StartTimer();
         yield break;
     }
 }
