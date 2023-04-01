@@ -9,6 +9,7 @@ public class HeartManager : MonoBehaviour
     [SerializeField] GameObject heart;
     [SerializeField] int heartNum;
     [SerializeField] Timer timer;
+    [SerializeField] GameObject gameOverWindow;
     Transform tr;
     int currentHeart;
 
@@ -64,14 +65,9 @@ public class HeartManager : MonoBehaviour
         }
     }
 
-
-    // 게임 오버가 되면 처리해야할 것들
-    // 1. 게임 타이머 멈추기
-    // 2. 적 소환 멈추기 - CurrentHeart 프로퍼티를 가져간 어디선가 관리
-    // 3. 게임 오버 UI 띄우기
     void GameOver()
     {
         timer.StopTimer();
-        GameOverWindow.instance.ActivateWindow();
+        gameOverWindow.SetActive(true);
     }
 }

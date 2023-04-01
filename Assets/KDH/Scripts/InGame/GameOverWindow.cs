@@ -10,7 +10,6 @@ public class GameOverWindow : MonoBehaviour
     [SerializeField] Text scoreText;
     [SerializeField] Text timeText;
     [SerializeField] Text highScoreText;
-
     [SerializeField] Timer timer;
 
     private void Awake()
@@ -34,10 +33,5 @@ public class GameOverWindow : MonoBehaviour
         }
         scoreText.text = $"{ScoreManager.instance.Score:N0}";
         highScoreText.text = $"Best Score : {PlayerPrefs.GetInt("HighScore"):N0}";
-    }
-
-    public void ActivateWindow()
-    {
-        gameObject.SetActive(true);
     }
 }

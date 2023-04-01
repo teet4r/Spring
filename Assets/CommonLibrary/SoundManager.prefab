@@ -54,7 +54,7 @@ MonoBehaviour:
   _sfxClips:
   - {fileID: 8300000, guid: 6f83db9c60ed65343bc68f03a358fdf1, type: 3}
   - {fileID: 8300000, guid: 25392241c1303cf438985a82312e846f, type: 3}
-  - {fileID: 0}
+  - {fileID: 8300000, guid: ef0065e6418fe2d4b93b71ee17555768, type: 3}
   - {fileID: 8300000, guid: 6ebe42908a89bb947965ed64e3a1a735, type: 3}
   - {fileID: 8300000, guid: f31f33c99503d65488ce4e0cd584cb16, type: 3}
   - {fileID: 8300000, guid: 4627e462d82419d42a061a008df4e186, type: 3}

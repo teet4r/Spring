@@ -62,15 +62,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0, g: 0.7490196, b: 0, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: -1025934715, guid: 92997a9726da5cc40aa6f8cd8658da36, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -209,15 +209,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.49803922, g: 0.49803922, b: 1, a: 1}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_Sprite: {fileID: 10905, guid: 0000000000000000f000000000000000, type: 0}
-  m_Type: 1
+  m_Sprite: {fileID: 1032776637, guid: 92997a9726da5cc40aa6f8cd8658da36, type: 3}
+  m_Type: 0
   m_PreserveAspect: 0
   m_FillCenter: 1
   m_FillMethod: 4
@@ -778,7 +778,6 @@ GameObject:
   - component: {fileID: 831436188}
   - component: {fileID: 831436190}
   - component: {fileID: 831436191}
-  - component: {fileID: 1652965232814630115}
   m_Layer: 5
   m_Name: StartText
   m_TagString: Untagged
@@ -829,19 +828,6 @@ MonoBehaviour:
   countDownText: {fileID: 8577871988956777060, guid: 586dd74612f604c4fa47a85c2a728ce6, type: 3}
   startText: {fileID: 6182118676367204039, guid: ad9b2555a83ed2848927f27f99e081d1, type: 3}
   timer: {fileID: 1652965233259199696}
---- !u!114 &1652965232814630115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 831436187}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6746fa7b11915e841bcaaaa9896ca87a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  sfx: 1
 --- !u!1 &961525233
 GameObject:
   m_ObjectHideFlags: 0
@@ -1552,6 +1538,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heart: {fileID: 2494275492822653045, guid: 2ef91274baedcdb4d9b7308cc5027bbf, type: 3}
   heartNum: 3
+  timer: {fileID: 1652965233259199696}
+  gameOverWindow: {fileID: 324394120}
 --- !u!1 &1652965233259199700
 GameObject:
   m_ObjectHideFlags: 0

@@ -34,7 +34,7 @@ public class Timer : MonoBehaviour
 
     public void StopTimer()
     {
-        StopCoroutine(PlayTimer());
+        StopAllCoroutines();
     }
 
     void RefreshTimerText()
