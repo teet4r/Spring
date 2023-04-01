@@ -14,6 +14,12 @@ public class IngameManager : MonoBehaviour
 
     [SerializeField] Boom _boomPrefab;
 
+    [SerializeField] Star _starPrefab;
+
+    [SerializeField] Potion _potionPrefab;
+
+    [SerializeField] Magnet _magnetPrefab;
+
 
 
     void Awake()
@@ -33,7 +39,16 @@ public class IngameManager : MonoBehaviour
         //StartCoroutine(_MakeFlower());
 
         // 气藕 积己
-        StartCoroutine(_MakeBoom());
+        //StartCoroutine(_MakeBoom());
+
+        // 胶鸥 积己
+        //StartCoroutine(_MakeStar());
+
+        // 器记 积己
+        //StartCoroutine(_MakePotion());
+
+        // 磊籍 积己
+        StartCoroutine(_MakeMagnet());
     }
 
     IEnumerator _MakeHornet()
@@ -75,7 +90,43 @@ public class IngameManager : MonoBehaviour
 
         while (true)
         {
-            Instantiate(_boomPrefab);
+            Instantiate(_boomPrefab, new Vector2(3000f, 3000f), Quaternion.identity);
+
+            yield return wfs;
+        }
+    }
+
+    IEnumerator _MakeStar()
+    {
+        var wfs = new WaitForSeconds(5f);
+
+        while (true)
+        {
+            Instantiate(_starPrefab, new Vector2(3000f, 3000f), Quaternion.identity);
+
+            yield return wfs;
+        }
+    }
+
+    IEnumerator _MakePotion()
+    {
+        var wfs = new WaitForSeconds(5f);
+
+        while (true)
+        {
+            Instantiate(_potionPrefab, new Vector2(3000f, 3000f), Quaternion.identity);
+
+            yield return wfs;
+        }
+    }
+
+    IEnumerator _MakeMagnet()
+    {
+        var wfs = new WaitForSeconds(5f);
+
+        while (true)
+        {
+            Instantiate(_magnetPrefab, new Vector2(3000f, 3000f), Quaternion.identity);
 
             yield return wfs;
         }

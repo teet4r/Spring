@@ -171,6 +171,9 @@ MonoBehaviour:
   _enemyPrefab: {fileID: 6991698623376706638, guid: 9ceef2bcbe9dd7841bdc571a21edef6e, type: 3}
   _flowerPrefab: {fileID: 7647416638957407282, guid: 208758ea0ef61d944963c9829ad1191c, type: 3}
   _boomPrefab: {fileID: 8130256649717516504, guid: 001431616e41fd645be4085283892c74, type: 3}
+  _starPrefab: {fileID: 3124644777529849527, guid: dabf7db00389bec4fae870fe458fee30, type: 3}
+  _potionPrefab: {fileID: 8073943671637620381, guid: 678ccf5c18fb89c40aea44ed64bc7127, type: 3}
+  _magnetPrefab: {fileID: 3821014884799887486, guid: 544730e7fd74c364fa719d4a8aa6f8d4, type: 3}
 --- !u!1 &1479228630
 GameObject:
   m_ObjectHideFlags: 0

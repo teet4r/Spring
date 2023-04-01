@@ -1,22 +1,69 @@
+using System.Collections;
 using UnityEngine;
 
 public class Bee : MonoBehaviour, IDamageable
 {
+    public MovementController MovementController
+    {
+        get => _movementController;
+    }
+
     [SerializeField] MovementController _movementController;
 
-    
+    bool _isInvincible;
+
+    Coroutine _invincibleCoroutine;
+
+
+
+    void OnEnable()
+    {
+        _StopInvincible();
+    }
+
+    void OnDisable()
+    {
+        _StopInvincible();
+    }
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        var item = collision.GetComponent<IUsable>();
-
-        item?.Use(this);
-
-        Destroy(collision.gameObject);
+        if (collision.TryGetComponent(out IUsable item))
+            item.Use(this);
     }
 
     public void GetDamage(int damage)
     {
-        HeartManager.instance.GetDamaged(damage);
+        if (_isInvincible)
+            return;
+
+        Debug.Log("¾Æ¾Ç!");
+        //HeartManager.instance.GetDamaged(damage);
+    }
+
+    public void StartInvincible(float time)
+    {
+        _StopInvincible();
+
+        StartCoroutine(_Invincible(time));
+    }
+
+    void _StopInvincible()
+    {
+        _isInvincible = false;
+
+        if (_invincibleCoroutine == null)
+            return;
+
+        StopCoroutine(_invincibleCoroutine);
+    }
+
+    IEnumerator _Invincible(float time)
+    {
+        _isInvincible = true;
+
+        yield return new WaitForSeconds(time);
+
+        _isInvincible = false;
     }
 }

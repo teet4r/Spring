@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Hornet : Enemy
+public class Hornet : Enemy, IDamageable
 {
     public MoveRigidbody MoveRigidbody
     {
@@ -27,7 +27,15 @@ public class Hornet : Enemy
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.CompareTag("Player"))
-            Destroy(gameObject);
+        if (collision.TryGetComponent(out Bee bee))
+        {
+            bee.GetDamage(1);
+            GetDamage(1000);
+        }
+    }
+
+    public void GetDamage(int damage)
+    {
+        Destroy(gameObject);
     }
 }
