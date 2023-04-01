@@ -19,6 +19,7 @@ public class Flower : MonoBehaviour
     {
         if (collision.TryGetComponent(out Bee player))
         {
+            SoundManager.Instance.PlaySfx(Sfx.FLOWER_GET);
             ScoreManager.instance.AddScore(_score);
             FlowerManager.instance.AcquireFlower();
 

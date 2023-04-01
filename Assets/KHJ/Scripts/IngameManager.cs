@@ -32,6 +32,8 @@ public class IngameManager : MonoBehaviour
 
     IEnumerator Start()
     {
+        SoundManager.Instance.PlayBgm(Bgm.IN_GAME);
+
         yield return new WaitForSeconds(3f);
 
         // ²Ü¹ú »ý¼º

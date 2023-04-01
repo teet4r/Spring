@@ -11,7 +11,7 @@ public class Magnet : Item, IUsable
 
     public void Use(Bee player)
     {
-
+        SoundManager.Instance.PlaySfx(Sfx.USE_MAGNET);
 
         Destroy(gameObject);
     }

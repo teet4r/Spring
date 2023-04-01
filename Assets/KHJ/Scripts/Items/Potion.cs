@@ -11,6 +11,8 @@ public class Potion : Item, IUsable
 
     public void Use(Bee player)
     {
+        SoundManager.Instance.PlaySfx(Sfx.USE_POTION);
+
         HeartManager.instance.RestoreHeart();
 
         player.StartChangingColor(Color.green);

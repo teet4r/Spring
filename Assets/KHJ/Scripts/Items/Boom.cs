@@ -13,6 +13,8 @@ public class Boom : Item, IUsable
 
     public void Use(Bee player)
     {
+        SoundManager.Instance.PlaySfx(Sfx.USE_BOMB);
+
         Instantiate(_smokePrefab, Vector2.zero, Quaternion.identity);
 
         var hits = Physics2D.OverlapBoxAll(

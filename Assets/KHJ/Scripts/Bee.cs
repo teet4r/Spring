@@ -44,6 +44,7 @@ public class Bee : MonoBehaviour, IDamageable
         if (_isInvincible)
             return;
 
+        SoundManager.Instance.PlaySfx(Sfx.DAMAGED);
         HeartManager.instance.GetDamaged(damage);
     }
 
