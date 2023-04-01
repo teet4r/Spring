@@ -6,6 +6,6 @@ public class OptionButtonActivator : MonoBehaviour
 {
     private void Start()
     {
-        Option.instance.RefreshOption();
+        //Option.instance.RefreshOption();
     }
 }

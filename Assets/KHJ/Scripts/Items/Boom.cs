@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Boom : Item, IUsable
 {
+    [SerializeField] GameObject _smokePrefab;
+
     void OnEnable()
     {
         _rigidbody.position = MainCamera.Instance.GetRandomPositionInCamera();
@@ -11,6 +13,8 @@ public class Boom : Item, IUsable
 
     public void Use(Bee player)
     {
+        Instantiate(_smokePrefab, Vector2.zero, Quaternion.identity);
+
         var hits = Physics2D.OverlapBoxAll(
             Vector2.zero,
             new Vector2(MainCamera.Instance.CameraHalfWidth * 2f, MainCamera.Instance.CameraHalfHeight * 2),

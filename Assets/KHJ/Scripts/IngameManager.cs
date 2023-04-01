@@ -6,6 +6,11 @@ public class IngameManager : MonoBehaviour
 {
     public static IngameManager Instance;
 
+    public Bee Player
+    {
+        get => _bee;
+    }
+
     [SerializeField] Bee _beePrefab;
 
     [SerializeField] HornetSpawner _hornetSpawner;

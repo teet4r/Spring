@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 6322772834594134985}
+  _smokePrefab: {fileID: 985483039366664255, guid: f91edac4d13fc4343ba96bb6a843ad05, type: 3}
 --- !u!114 &7441905776697012221
 MonoBehaviour:
   m_ObjectHideFlags: 0
