@@ -8,17 +8,13 @@ public class IngameManager : MonoBehaviour
 
     [SerializeField] Bee _beePrefab;
 
-    [SerializeField] Flower _flowerPrefab;
-
-    [SerializeField] Boom _boomPrefab;
-
-    [SerializeField] Star _starPrefab;
-
-    [SerializeField] Potion _potionPrefab;
-
-    [SerializeField] Magnet _magnetPrefab;
-
     [SerializeField] HornetSpawner _hornetSpawner;
+
+    [SerializeField] FlowerSpawner _flowerSpawner;
+
+    [SerializeField] ItemSpawner _itemSpawner;
+
+    Bee _bee;
 
 
 
@@ -30,84 +26,29 @@ public class IngameManager : MonoBehaviour
     void Start()
     {
         // 曹国 积己
-        Instantiate(_beePrefab);
+        _bee = Instantiate(_beePrefab);
 
         // 富国 积己
         _hornetSpawner.StartSpawningHornet();
 
         // 采 积己
-        //StartCoroutine(_MakeFlower());
+        _flowerSpawner.StartSpawningFlower();
 
-        // 气藕 积己
-        //StartCoroutine(_MakeBoom());
-
-        // 胶鸥 积己
-        //StartCoroutine(_MakeStar());
-
-        // 器记 积己
-        //StartCoroutine(_MakePotion());
-
-        // 磊籍 积己
-        //StartCoroutine(_MakeMagnet());
+        // 酒捞袍 积己
+        _itemSpawner.StartSpawningItem();
     }
 
-    IEnumerator _MakeFlower()
+    void Update()
     {
-        var wfs = new WaitForSeconds(2f);
-
-        while (true)
+        /*
+        if (HeartManager.instance.CurrentHeart <= 0)
         {
-            Instantiate(_flowerPrefab, new Vector2(3000f, 3000f), Quaternion.identity);
+            Destroy(_bee.gameObject);
 
-            yield return wfs;
+            _hornetSpawner.StopSpawningHornet();
+            _flowerSpawner.StopSpawningFlower();
+            _itemSpawner.StopSpawningItem();
         }
-    }
-
-    IEnumerator _MakeBoom()
-    {
-        var wfs = new WaitForSeconds(3f);
-
-        while (true)
-        {
-            Instantiate(_boomPrefab, new Vector2(3000f, 3000f), Quaternion.identity);
-
-            yield return wfs;
-        }
-    }
-
-    IEnumerator _MakeStar()
-    {
-        var wfs = new WaitForSeconds(5f);
-
-        while (true)
-        {
-            Instantiate(_starPrefab, new Vector2(3000f, 3000f), Quaternion.identity);
-
-            yield return wfs;
-        }
-    }
-
-    IEnumerator _MakePotion()
-    {
-        var wfs = new WaitForSeconds(5f);
-
-        while (true)
-        {
-            Instantiate(_potionPrefab, new Vector2(3000f, 3000f), Quaternion.identity);
-
-            yield return wfs;
-        }
-    }
-
-    IEnumerator _MakeMagnet()
-    {
-        var wfs = new WaitForSeconds(5f);
-
-        while (true)
-        {
-            Instantiate(_magnetPrefab, new Vector2(3000f, 3000f), Quaternion.identity);
-
-            yield return wfs;
-        }
+        */
     }
 }
