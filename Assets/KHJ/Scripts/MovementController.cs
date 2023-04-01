@@ -1,9 +1,15 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class MovementController : MonoBehaviour
 {
+    public float Speed
+    {
+        get => _speed;
+    }
+
     [SerializeField] Transform _transform;
 
     [SerializeField] Rigidbody2D _rigidbody;
@@ -30,6 +36,8 @@ public class MovementController : MonoBehaviour
 
     bool _originFlipY;
 
+    Coroutine _changeSpeedCoroutine;
+
 
     
     void Awake()
@@ -50,6 +58,17 @@ public class MovementController : MonoBehaviour
 
         _FlipX();
         _FlipY();
+    }
+
+    public void ChangeSpeed(float newSpeed, float time)
+    {
+        if (_changeSpeedCoroutine != null)
+        {
+            StopCoroutine(_changeSpeedCoroutine);
+            _changeSpeedCoroutine = null;
+        }
+
+        _changeSpeedCoroutine = StartCoroutine(_ChangeSpeed(newSpeed, time));
     }
 
     void _Move()
@@ -98,6 +117,17 @@ public class MovementController : MonoBehaviour
             _spriteRenderer.flipY = _originFlipY;
         else if (_vertical > 0)
             _spriteRenderer.flipY = !_originFlipY;
+    }
+
+    IEnumerator _ChangeSpeed(float newSpeed, float time)
+    {
+        var originSpeed = _speed;
+
+        _speed = newSpeed;
+
+        yield return new WaitForSeconds(time);
+
+        _speed = originSpeed;
     }
 }
     
