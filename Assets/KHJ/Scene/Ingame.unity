@@ -169,6 +169,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _beePrefab: {fileID: 506726517664143893, guid: cba52929e1cb0bc488f6f8df79e9546e, type: 3}
   _enemyPrefab: {fileID: 6991698623376706638, guid: 9ceef2bcbe9dd7841bdc571a21edef6e, type: 3}
+  _flowerPrefab: {fileID: 7647416638957407282, guid: 208758ea0ef61d944963c9829ad1191c, type: 3}
+  _boomPrefab: {fileID: 8130256649717516504, guid: 001431616e41fd645be4085283892c74, type: 3}
 --- !u!1 &1479228630
 GameObject:
   m_ObjectHideFlags: 0
@@ -180,6 +182,7 @@ GameObject:
   - component: {fileID: 1479228633}
   - component: {fileID: 1479228632}
   - component: {fileID: 1479228631}
+  - component: {fileID: 1479228634}
   m_Layer: 0
   m_Name: Main Camera
   m_TagString: MainCamera
@@ -253,3 +256,17 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1479228634
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1479228630}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b85c6cd00de19fc4f8a5b48e1cbf6008, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _mainCamera: {fileID: 1479228632}
+  _synchronizeWithScreenSize: 1

@@ -1,33 +1,22 @@
 using UnityEngine;
 
-public class Bee : MonoBehaviour
+public class Bee : MonoBehaviour, IDamageable
 {
-    public static Bee Instance = null;
+    [SerializeField] MovementController _movementController;
 
+    
 
-
-    void Awake()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
+        var item = collision.GetComponent<IUsable>();
+
+        item?.Use(this);
+
+        Destroy(collision.gameObject);
     }
 
-    void Update()
+    public void GetDamage(int damage)
     {
-        if (Input.GetKeyDown(KeyCode.Z))
-            Deactivate();
-    }
-
-    public void Activate()
-    {
-        gameObject.SetActive(true);
-    }
-
-    public void Deactivate()
-    {
-        gameObject.SetActive(false);
+        HeartManager.instance.GetDamaged();
     }
 }

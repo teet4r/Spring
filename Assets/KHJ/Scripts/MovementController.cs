@@ -1,9 +1,15 @@
+using System.Collections;
 using UnityEngine;
 
 [RequireComponent(typeof(Rigidbody2D))]
 [RequireComponent(typeof(SpriteRenderer))]
 public class MovementController : MonoBehaviour
 {
+    public float Speed
+    {
+        get => _speed;
+    }
+
     [SerializeField] Transform _transform;
 
     [SerializeField] Rigidbody2D _rigidbody;
@@ -18,15 +24,9 @@ public class MovementController : MonoBehaviour
 
     [SerializeField] bool _activateFlipY;
 
-    Camera _camera;
-
     float _vertical;
 
     float _horizontal;
-
-    float _cameraHalfHeight;
-
-    float _cameraHalfWidth;
 
     float _spriteHalfHeight;
 
@@ -36,16 +36,12 @@ public class MovementController : MonoBehaviour
 
     bool _originFlipY;
 
+    Coroutine _changeSpeedCoroutine;
+
 
     
     void Awake()
     {
-        _camera = Camera.main;
-        _camera.orthographicSize = Screen.height >> 1;
-
-        _cameraHalfHeight = _camera.orthographicSize;
-        _cameraHalfWidth = _cameraHalfHeight * _camera.aspect;
-
         _spriteHalfHeight = _spriteRenderer.sprite.bounds.size.y / 2 * _transform.localScale.y;
         _spriteHalfWidth = _spriteRenderer.sprite.bounds.size.x / 2 * _transform.localScale.x;
 
@@ -64,6 +60,17 @@ public class MovementController : MonoBehaviour
         _FlipY();
     }
 
+    public void ChangeSpeed(float newSpeed, float time)
+    {
+        if (_changeSpeedCoroutine != null)
+        {
+            StopCoroutine(_changeSpeedCoroutine);
+            _changeSpeedCoroutine = null;
+        }
+
+        _changeSpeedCoroutine = StartCoroutine(_ChangeSpeed(newSpeed, time));
+    }
+
     void _Move()
     {
         var dir = (Vector2.up * _vertical + Vector2.right * _horizontal).normalized;
@@ -79,14 +86,14 @@ public class MovementController : MonoBehaviour
     {
         var x = Mathf.Clamp(
             curWorldPosition.x,
-            -_cameraHalfWidth + _spriteHalfWidth,
-            _cameraHalfWidth - _spriteHalfWidth
+            -MainCamera.Instance.CameraHalfWidth + _spriteHalfWidth,
+            MainCamera.Instance.CameraHalfWidth - _spriteHalfWidth
         );
 
         var y = Mathf.Clamp(
             curWorldPosition.y,
-            -_cameraHalfHeight + _spriteHalfHeight,
-            _cameraHalfHeight - _spriteHalfHeight
+            -MainCamera.Instance.CameraHalfHeight + _spriteHalfHeight,
+            MainCamera.Instance.CameraHalfHeight - _spriteHalfHeight
         );
 
         return new Vector2(x, y);
@@ -110,6 +117,17 @@ public class MovementController : MonoBehaviour
             _spriteRenderer.flipY = _originFlipY;
         else if (_vertical > 0)
             _spriteRenderer.flipY = !_originFlipY;
+    }
+
+    IEnumerator _ChangeSpeed(float newSpeed, float time)
+    {
+        var originSpeed = _speed;
+
+        _speed = newSpeed;
+
+        yield return new WaitForSeconds(time);
+
+        _speed = originSpeed;
     }
 }
     
