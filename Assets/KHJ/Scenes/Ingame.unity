@@ -151,7 +151,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 1868135692}
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -168,12 +169,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _beePrefab: {fileID: 506726517664143893, guid: cba52929e1cb0bc488f6f8df79e9546e, type: 3}
-  _enemyPrefab: {fileID: 6991698623376706638, guid: 9ceef2bcbe9dd7841bdc571a21edef6e, type: 3}
   _flowerPrefab: {fileID: 7647416638957407282, guid: 208758ea0ef61d944963c9829ad1191c, type: 3}
   _boomPrefab: {fileID: 8130256649717516504, guid: 001431616e41fd645be4085283892c74, type: 3}
   _starPrefab: {fileID: 3124644777529849527, guid: dabf7db00389bec4fae870fe458fee30, type: 3}
   _potionPrefab: {fileID: 8073943671637620381, guid: 678ccf5c18fb89c40aea44ed64bc7127, type: 3}
   _magnetPrefab: {fileID: 3821014884799887486, guid: 544730e7fd74c364fa719d4a8aa6f8d4, type: 3}
+  _hornetSpawner: {fileID: 1868135693}
 --- !u!1 &1479228630
 GameObject:
   m_ObjectHideFlags: 0
@@ -273,3 +274,48 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 1479228632}
   _synchronizeWithScreenSize: 1
+--- !u!1 &1868135691
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1868135692}
+  - component: {fileID: 1868135693}
+  m_Layer: 0
+  m_Name: HornetSpawner
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1868135692
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868135691}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 136868160}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1868135693
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868135691}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6d29980c2228d8249bbd3fdcf2905a76, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _hornetPrefab: {fileID: 6991698623376706638, guid: 9ceef2bcbe9dd7841bdc571a21edef6e, type: 3}
