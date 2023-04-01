@@ -11,6 +11,9 @@ public class Option : MonoBehaviour
     [SerializeField] Slider bgmSlider;
     [SerializeField] Slider sfxSlider;
     [SerializeField] GameObject optionWindow;
+    [SerializeField] GameObject optionButton;
+    [SerializeField] GameObject mainMenuButtonGroup;
+    [SerializeField] GameObject inGameButtonGroup;
 
     private void Awake()
     {
@@ -25,10 +28,42 @@ public class Option : MonoBehaviour
         }
     }
 
+    public void RefreshOption()
+    {
+        if (SceneManager.GetActiveScene().name == "InGame")
+        {
+            optionButton.SetActive(false);
+            mainMenuButtonGroup.SetActive(false);
+            inGameButtonGroup.SetActive(true);
+        }
+        else
+        {
+            optionButton.SetActive(true);
+            mainMenuButtonGroup.SetActive(true);
+            inGameButtonGroup.SetActive(false);
+        }
+    }
+
     private void Start()
     {
         bgmSlider.onValueChanged.AddListener(delegate { RefreshBgmVolume(); });
         sfxSlider.onValueChanged.AddListener(delegate { RefreshSfxVolume(); });
+    }
+
+    private void Update()
+    {
+        if (SceneManager.GetActiveScene().name == "InGame")
+        {
+            if (Input.GetKeyDown(KeyCode.Escape))
+            {
+                OptionWindowActivate();
+            }
+        }
+    }
+
+    void OptionWindowActivate()
+    {
+        optionWindow.SetActive(!optionWindow.activeSelf);
     }
 
     void RefreshBgmVolume()
@@ -39,15 +74,5 @@ public class Option : MonoBehaviour
     void RefreshSfxVolume()
     {
         SoundManager.Instance.SfxAudio.volume = sfxSlider.value;
-    }
-
-    public void OpenOptionWindow()
-    {
-        optionWindow.SetActive(true);
-    }
-
-    public void CloseOptionWindow()
-    {
-        optionWindow.SetActive(false);
     }
 }
