@@ -19,6 +19,6 @@ public class Boom : Item, IUsable
 
         for (int i = 0; i < hits.Length; i++)
             if (hits[i] != null && hits[i].CompareTag("Enemy"))
-                Destroy(hits[i]);
+                Destroy(hits[i].gameObject);
     }
 }
