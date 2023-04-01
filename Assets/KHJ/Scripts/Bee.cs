@@ -2,32 +2,12 @@ using UnityEngine;
 
 public class Bee : MonoBehaviour
 {
-    public static Bee Instance = null;
-
-
-
-    void Awake()
+    void OnTriggerEnter2D(Collider2D collision)
     {
-        if (Instance == null)
-        {
-            Instance = this;
-            DontDestroyOnLoad(gameObject);
-        }
-    }
+        var item = collision.GetComponent<IUsable>();
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Z))
-            Deactivate();
-    }
+        item?.Use(this);
 
-    public void Activate()
-    {
-        gameObject.SetActive(true);
-    }
-
-    public void Deactivate()
-    {
-        gameObject.SetActive(false);
+        Destroy(collision.gameObject);
     }
 }
