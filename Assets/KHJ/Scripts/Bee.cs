@@ -37,8 +37,7 @@ public class Bee : MonoBehaviour, IDamageable
         if (_isInvincible)
             return;
 
-        Debug.Log("¾Æ¾Ç!");
-        //HeartManager.instance.GetDamaged(damage);
+        HeartManager.instance.GetDamaged(damage);
     }
 
     public void StartInvincible(float time)

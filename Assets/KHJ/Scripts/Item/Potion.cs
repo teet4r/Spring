@@ -11,8 +11,7 @@ public class Potion : Item, IUsable
 
     public void Use(Bee player)
     {
-        Debug.Log("도로롱 체력 회복!!");
-        //HeartManager.instance.RestoreHeart();
+        HeartManager.instance.RestoreHeart();
 
         Destroy(gameObject);
     }

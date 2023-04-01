@@ -16,6 +16,8 @@ public class IngameManager : MonoBehaviour
 
     Bee _bee;
 
+    bool _isGameover = false;
+
 
 
     void Awake()
@@ -40,15 +42,18 @@ public class IngameManager : MonoBehaviour
 
     void Update()
     {
-        /*
+        if (_isGameover)
+            return;
+
         if (HeartManager.instance.CurrentHeart <= 0)
         {
+            _isGameover = true;
+            
             Destroy(_bee.gameObject);
 
             _hornetSpawner.StopSpawningHornet();
             _flowerSpawner.StopSpawningFlower();
             _itemSpawner.StopSpawningItem();
         }
-        */
     }
 }

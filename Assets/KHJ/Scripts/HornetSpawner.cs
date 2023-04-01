@@ -61,12 +61,11 @@ public class HornetSpawner : MonoBehaviour
             {
                 var clone = Instantiate(_hornetPrefab, spawnPosition, Quaternion.identity);
 
-                var start = Circle.GetOnUnitCirclePoint(Vector2.zero, Random.Range(0f, 360f)) * 1200f;
-                var end = Circle.GetOnUnitCirclePoint(Vector2.zero, Random.Range(0f, 360f)) * 1200f;
-
+                var start = Circle.GetPointOnUnitCircle(Vector2.zero, Random.Range(0f, 360f)) * 800f;
+                var end = Circle.GetPointOnUnitCircle(Vector2.zero, Random.Range(0f, 360f)) * 800f;
+                
                 clone.MoveRigidbody.StartMove(start, end, _baseHornetSpeed * _speedMultiplier);
                 clone.RotateRigidbody.StartLookAt(end);
-                clone.DestroyTimer.StartTimer();
 
                 yield return new WaitForSeconds(Random.Range(0f, 1f));
             }

@@ -34,7 +34,7 @@ public class MainCamera : MonoBehaviour
             _mainCamera.orthographicSize = Screen.height >> 1;
 
         _cameraHalfHeight = _mainCamera.orthographicSize;
-        _cameraHalfWidth = _cameraHalfHeight * _mainCamera.aspect;
+        _cameraHalfWidth = _cameraHalfHeight * _mainCamera.aspect / 1920f * 1000f;
     }
 
     public Vector2 GetRandomPositionInCamera()

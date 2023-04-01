@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class Circle
 {
-    public static Vector2 GetOnUnitCirclePoint(Vector2 center, float angle)
+    public static Vector2 GetPointOnUnitCircle(Vector2 center, float angle)
     {
         angle %= 360;
 
