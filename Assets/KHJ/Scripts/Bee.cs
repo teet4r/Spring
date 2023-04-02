@@ -35,8 +35,17 @@ public class Bee : MonoBehaviour, IDamageable
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (collision.TryGetComponent(out IUsable item))
-            item.Use(this);
+        _TriggerCondition(collision);
+    }
+
+    void OnTriggerStay2D(Collider2D collision)
+    {
+        _TriggerCondition(collision);
+    }
+
+    void OnTriggerExit2D(Collider2D collision)
+    {
+        _TriggerCondition(collision);
     }
 
     public void GetDamage(int damage)
@@ -98,5 +107,11 @@ public class Bee : MonoBehaviour, IDamageable
         yield return _spriteRenderer.material.DOColor(Color.white, 1f).WaitForCompletion();
 
         _changingColorCoroutine = null;
+    }
+
+    void _TriggerCondition(Collider2D collision)
+    {
+        if (collision.TryGetComponent(out IUsable item))
+            item.Use(this);
     }
 }

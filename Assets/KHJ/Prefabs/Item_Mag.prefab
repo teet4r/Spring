@@ -138,6 +138,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   _rigidbody: {fileID: 3821014884799887361}
+  _timer: {fileID: -6652640308395996318}
 --- !u!114 &-6652640308395996318
 MonoBehaviour:
   m_ObjectHideFlags: 0

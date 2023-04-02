@@ -16,7 +16,14 @@ public class MainCamera : MonoBehaviour
         get => _cameraHalfWidth;
     }
 
+    public CameraShaking CameraShaking
+    {
+        get => _cameraShaking;
+    }
+
     [SerializeField] Camera _mainCamera;
+
+    [SerializeField] CameraShaking _cameraShaking;
 
     [SerializeField] bool _synchronizeWithScreenSize;
 

@@ -14,15 +14,15 @@ public class DestroyTimer : MonoBehaviour
     {
         _timerCoroutine = null;
 
-        _StartTimer();
+        StartTimer();
     }
 
     void OnDisable()
     {
-        _StopTimer();
+        StopTimer();
     }
 
-    void _StartTimer()
+    public void StartTimer()
     {
         if (_timerCoroutine != null)
             return;
@@ -30,7 +30,7 @@ public class DestroyTimer : MonoBehaviour
         _timerCoroutine = StartCoroutine(_Timer(_time));
     }
 
-    void _StopTimer()
+    public void StopTimer()
     {
         if (_timerCoroutine == null)
             return;

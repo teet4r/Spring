@@ -15,6 +15,8 @@ public class Boom : Item, IUsable
     {
         SoundManager.Instance.PlaySfx(Sfx.USE_BOMB);
 
+        MainCamera.Instance.CameraShaking.StartCameraShaking();
+
         Instantiate(_smokePrefab, Vector2.zero, Quaternion.identity);
 
         var hits = Physics2D.OverlapBoxAll(

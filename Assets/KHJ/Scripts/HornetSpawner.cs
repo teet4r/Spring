@@ -82,8 +82,11 @@ public class HornetSpawner : MonoBehaviour
             {
                 var clone = SpawnHornet();
 
-                var start = Circle.GetPointOnUnitCircle(Vector2.zero, Random.Range(0f, 360f)) * 800f;
-                var end = Circle.GetPointOnUnitCircle(Vector2.zero, Random.Range(0f, 360f)) * 800f;
+                var startAngle = Random.Range(0f, 360f);
+                var endAngle = startAngle + 180f;
+
+                var start = Circle.GetPointOnUnitCircle(Vector2.zero, startAngle) * 1200f;
+                var end = Circle.GetPointOnUnitCircle(Vector2.zero, Random.Range(endAngle - 22.5f, endAngle + 22.5f)) * 1200f;
                 
                 clone.MoveRigidbody.StartMove(start, end, HornetSpeed);
                 clone.RotateRigidbody.StartLookAt(end);
