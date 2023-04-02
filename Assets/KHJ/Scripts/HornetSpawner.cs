@@ -119,7 +119,7 @@ public class HornetSpawner : MonoBehaviour
         {
             yield return wfs;
 
-            _speedMultiplier *= 1.25f;
+            _speedMultiplier *= 1.1f;
         }
     }
 

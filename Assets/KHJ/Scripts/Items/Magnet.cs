@@ -4,7 +4,14 @@ using UnityEngine;
 
 public class Magnet : Item, IUsable
 {
+    public bool IsUsed
+    {
+        get => _isUsed;
+    }
+    
     [SerializeField] DestroyTimer _timer;
+
+    bool _isUsed = false;
 
 
 
@@ -15,6 +22,11 @@ public class Magnet : Item, IUsable
 
     public void Use(Bee player)
     {
+        if (IsUsed)
+            return;
+
+        _isUsed = true;
+
         _timer.StopTimer();
 
         SoundManager.Instance.PlaySfx(Sfx.USE_MAGNET);

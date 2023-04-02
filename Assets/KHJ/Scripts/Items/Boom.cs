@@ -4,7 +4,16 @@ using UnityEngine;
 
 public class Boom : Item, IUsable
 {
+    public bool IsUsed
+    {
+        get => _isUsed;
+    }
+
     [SerializeField] GameObject _smokePrefab;
+
+    bool _isUsed = false;
+
+    
 
     void OnEnable()
     {
@@ -13,6 +22,11 @@ public class Boom : Item, IUsable
 
     public void Use(Bee player)
     {
+        if (IsUsed)
+            return;
+
+        _isUsed = true;
+
         SoundManager.Instance.PlaySfx(Sfx.USE_BOMB);
 
         MainCamera.Instance.CameraShaking.StartCameraShaking();
