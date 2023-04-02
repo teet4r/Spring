@@ -78,6 +78,7 @@ public class Option : MonoBehaviour
     public void SelectMainMenuButton()
     {
         SceneManager.LoadScene("MainMenu");
+        Time.timeScale = 1;
     }
 
     void OptionWindowActivate()
