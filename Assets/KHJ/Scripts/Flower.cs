@@ -17,7 +17,7 @@ public class Flower : MonoBehaviour
 
     void OnEnable()
     {
-        _rigidbody.position = MainCamera.Instance.GetRandomPositionInCamera();
+        _rigidbody.position = MainCamera.Instance.GetRandomPositionInCamera(560f, 150f);
     }
 
     void OnTriggerEnter2D(Collider2D collision)

@@ -64,12 +64,12 @@ public class MovementController : MonoBehaviour
 
     void OnDisable()
     {
-        _StopChangeSpeed();
+        _StopChangingSpeed();
     }
 
-    public void StartChangeSpeed(float speedMultiplier, float time)
+    public void StartChangingSpeed(float speedMultiplier, float time)
     {
-        _StopChangeSpeed();
+        _StopChangingSpeed();
 
         _changeSpeedCoroutine = StartCoroutine(_ChangeSpeed(speedMultiplier, time));
     }
@@ -89,14 +89,14 @@ public class MovementController : MonoBehaviour
     {
         var x = Mathf.Clamp(
             curWorldPosition.x,
-            -MainCamera.Instance.CameraHalfWidth + _spriteHalfWidth,
-            MainCamera.Instance.CameraHalfWidth - _spriteHalfWidth
+            -500f + _spriteHalfWidth,
+            500f - _spriteHalfWidth
         );
 
         var y = Mathf.Clamp(
             curWorldPosition.y,
-            -MainCamera.Instance.CameraHalfHeight + _spriteHalfHeight,
-            MainCamera.Instance.CameraHalfHeight - _spriteHalfHeight
+            -MainCamera.CameraHalfHeight + _spriteHalfHeight,
+            MainCamera.CameraHalfHeight - _spriteHalfHeight
         );
 
         return new Vector2(x, y);
@@ -131,7 +131,7 @@ public class MovementController : MonoBehaviour
         _speedMultiplier = 1f;
     }
 
-    void _StopChangeSpeed()
+    void _StopChangingSpeed()
     {
         _speedMultiplier = 1f;
 

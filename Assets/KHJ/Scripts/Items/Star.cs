@@ -15,7 +15,7 @@ public class Star : Item, IUsable
 
     void OnEnable()
     {
-        _rigidbody.position = MainCamera.Instance.GetRandomPositionInCamera();
+        _rigidbody.position = MainCamera.Instance.GetRandomPositionInCamera(560f, 150f);
     }
 
     public void Use(Bee player)
@@ -29,7 +29,6 @@ public class Star : Item, IUsable
 
         player.StartChangingColor(new Color(1f, 1f, 1f, 0.25f));
         player.StartInvincible(2f);
-        player.MovementController.StartChangeSpeed(1.5f, 2f);
 
         Destroy(gameObject);
     }

@@ -76,6 +76,8 @@ public class HornetSpawner : MonoBehaviour
 
     IEnumerator _SpawnHornet()
     {
+        float spawnRate = 3f;
+
         while (true)
         {
             for (int i = 0; i < _makeCount; i++)
@@ -91,9 +93,12 @@ public class HornetSpawner : MonoBehaviour
                 clone.MoveRigidbody.StartMove(start, end, HornetSpeed);
                 clone.RotateRigidbody.StartLookAt(end);
 
-                yield return new WaitForSeconds(Random.Range(0f, 1f));
+                yield return null;
             }
-            yield return new WaitForSeconds(Random.Range(3f, 5f));
+
+            spawnRate *= 0.95f;
+
+            yield return new WaitForSeconds(Mathf.Max(spawnRate, 0.5f));
         }
     }
 
@@ -119,19 +124,19 @@ public class HornetSpawner : MonoBehaviour
         {
             yield return wfs;
 
-            _speedMultiplier *= 1.1f;
+            _speedMultiplier *= 1.3f;
         }
     }
 
     IEnumerator _MakeCountAdder()
     {
-        var wfs = new WaitForSeconds(20f);
+        var wfs = new WaitForSeconds(8f);
 
         while (true)
         {
             yield return wfs;
 
-            _makeCount *= 2;
+            _makeCount = (int)(_makeCount * 1.4f);
         }
     }
 }

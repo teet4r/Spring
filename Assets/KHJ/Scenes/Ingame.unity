@@ -579,6 +579,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _mainCamera: {fileID: 1479228632}
   _cameraShaking: {fileID: 1479228637}
+  _playScreenCenter: {x: 0, y: 0}
+  _playScreenHalfHeight: 540
+  _playScreenHalfWidth: 500
   _synchronizeWithScreenSize: 1
 --- !u!114 &1479228635
 MonoBehaviour:

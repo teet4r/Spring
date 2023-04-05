@@ -17,7 +17,7 @@ public class Magnet : Item, IUsable
 
     void OnEnable()
     {
-        _rigidbody.position = MainCamera.Instance.GetRandomPositionInCamera();
+        _rigidbody.position = MainCamera.Instance.GetRandomPositionInCamera(560f, 150f);
     }
 
     public void Use(Bee player)
@@ -33,7 +33,7 @@ public class Magnet : Item, IUsable
 
         var hits = Physics2D.OverlapBoxAll(
             Vector2.zero,
-            new Vector2(MainCamera.Instance.CameraHalfWidth * 2f, MainCamera.Instance.CameraHalfHeight * 2),
+            new Vector2(MainCamera.CameraHalfWidth * 2f, MainCamera.CameraHalfHeight * 2),
             0f
         );
 

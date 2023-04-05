@@ -17,13 +17,13 @@ public class Pattern2 : MonoBehaviour, IPattern
     {
         var player = IngameManager.Instance.Player;
 
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 2; i++)
         {
             var clone = _hornetSpawner.SpawnHornet();
 
-            var randomY = Random.Range(-MainCamera.Instance.CameraHalfHeight, MainCamera.Instance.CameraHalfHeight);
+            var randomY = Random.Range(-MainCamera.CameraHalfHeight, MainCamera.CameraHalfHeight);
 
-            var start = new Vector2(MainCamera.Instance.CameraHalfWidth + 100f, randomY);
+            var start = new Vector2(MainCamera.CameraHalfWidth + 100f, randomY);
             var mid = player == null ? Vector2.zero : player.MovementController.Position;
             var end = (mid - start).normalized * 1000f;
 
@@ -34,9 +34,9 @@ public class Pattern2 : MonoBehaviour, IPattern
 
             clone = _hornetSpawner.SpawnHornet();
 
-            randomY = Random.Range(-MainCamera.Instance.CameraHalfHeight, MainCamera.Instance.CameraHalfHeight);
+            randomY = Random.Range(-MainCamera.CameraHalfHeight, MainCamera.CameraHalfHeight);
 
-            start = new Vector2(-MainCamera.Instance.CameraHalfWidth - 100f, randomY);
+            start = new Vector2(-MainCamera.CameraHalfWidth - 100f, randomY);
             mid = player == null ? Vector2.zero : player.MovementController.Position;
             end = (mid - start).normalized * 1000f;
 

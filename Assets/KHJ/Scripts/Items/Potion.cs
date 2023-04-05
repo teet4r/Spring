@@ -15,7 +15,7 @@ public class Potion : Item, IUsable
 
     void OnEnable()
     {
-        _rigidbody.position = MainCamera.Instance.GetRandomPositionInCamera();
+        _rigidbody.position = MainCamera.Instance.GetRandomPositionInCamera(560f, 150f);
     }
 
     public void Use(Bee player)
