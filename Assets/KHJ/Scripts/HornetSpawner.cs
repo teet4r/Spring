@@ -124,7 +124,7 @@ public class HornetSpawner : MonoBehaviour
         {
             yield return wfs;
 
-            _speedMultiplier *= 1.3f;
+            _speedMultiplier *= 1.2f;
         }
     }
 
@@ -136,7 +136,7 @@ public class HornetSpawner : MonoBehaviour
         {
             yield return wfs;
 
-            _makeCount = (int)(_makeCount * 1.4f);
+            _makeCount = (int)(_makeCount * 1.3f);
         }
     }
 }
