@@ -27,8 +27,8 @@ public class Star : Item, IUsable
 
         SoundManager.Instance.PlaySfx(Sfx.USE_POWER);
 
-        player.StartChangingColor(new Color(1f, 1f, 1f, 0.25f));
-        player.StartInvincible(2f);
+        player.StartChangingColor(new Color(1f, 1f, 1f, 0.25f), 3f);
+        player.StartInvincible(3f);
 
         Destroy(gameObject);
     }

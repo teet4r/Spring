@@ -53,6 +53,8 @@ public class Bee : MonoBehaviour, IDamageable
         if (_isInvincible)
             return;
 
+        StartInvincible(1.5f);
+
         SoundManager.Instance.PlaySfx(Sfx.DAMAGED);
         HeartManager.instance.GetDamaged(damage);
     }
@@ -64,12 +66,12 @@ public class Bee : MonoBehaviour, IDamageable
         StartCoroutine(_Invincible(time));
     }
 
-    public void StartChangingColor(Color temperary)
+    public void StartChangingColor(Color temperary, float totalChangingTime)
     {
         if (_changingColorCoroutine != null)
             return;
 
-        _changingColorCoroutine = StartCoroutine(_TemperatelySetColor(temperary));
+        _changingColorCoroutine = StartCoroutine(_TemperatelySetColor(temperary, totalChangingTime));
     }
 
     public void StopChangingColor()
@@ -101,10 +103,10 @@ public class Bee : MonoBehaviour, IDamageable
         _isInvincible = false;
     }
 
-    IEnumerator _TemperatelySetColor(Color temperary)
+    IEnumerator _TemperatelySetColor(Color temperary, float totalChangingTime)
     {
-        yield return _spriteRenderer.material.DOColor(temperary, 1f).WaitForCompletion();
-        yield return _spriteRenderer.material.DOColor(Color.white, 1f).WaitForCompletion();
+        yield return _spriteRenderer.material.DOColor(temperary, totalChangingTime / 2f).WaitForCompletion();
+        yield return _spriteRenderer.material.DOColor(Color.white, totalChangingTime / 2f).WaitForCompletion();
 
         _changingColorCoroutine = null;
     }

@@ -29,7 +29,7 @@ public class Potion : Item, IUsable
 
         HeartManager.instance.RestoreHeart();
 
-        player.StartChangingColor(Color.green);
+        player.StartChangingColor(Color.green, 2f);
 
         Destroy(gameObject);
     }

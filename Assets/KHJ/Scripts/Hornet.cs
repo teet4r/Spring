@@ -29,7 +29,7 @@ public class Hornet : Enemy, IDamageable
     {
         if (collision.TryGetComponent(out Bee player))
         {
-            player.StartChangingColor(Color.red);
+            player.StartChangingColor(Color.red, 2f);
             player.GetDamage(1);
             GetDamage(1000);
         }
